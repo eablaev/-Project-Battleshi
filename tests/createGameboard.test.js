@@ -82,8 +82,6 @@ it('Gameboards reports if the ship has sunk. Multi-cell ships', () => {
     for (let col = 0; col < 4; col++) {
         newBoard.receiveAttack(0, col);
     }
-
-
     const attackedShip = newBoard.ships.find(ship => ship.shipId === 1);
     expect(attackedShip.isSunk()).toBe(true);
 });
@@ -94,6 +92,6 @@ it('Gameboards reports if all the ships have been sunk', () => {
     newBoard.ships[0].isSunk = jest.fn().mockReturnValue(true);
 
     expect(newBoard.allShipsSunk()).toBe(true);
-    
 });
+
 
