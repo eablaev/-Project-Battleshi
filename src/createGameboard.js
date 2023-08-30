@@ -21,6 +21,23 @@ function createGameboard() {
         grid: grid,
         ships:ships,
         placeShip(row, col, length, direction) {
+            //placement checks:
+            //1.range
+            for(let i = 0; i < length; i++) {
+                if(direction === 'horizontal') {
+                    if(col + i < 0 || col + i >= 10 ) return false;
+
+                    if(grid[row][col + i].shipId) {
+                        return false
+                    } 
+                } else if(direction === 'vertical') {
+                    if(row + i < 0 || row + i >= 10 ) return false;
+
+                    if(grid[row + i][col].shipId) {
+                        return false
+                    } 
+                }
+            }
             const newShip = createShip(length);
             newShip.shipId = shipId;
             ships.push(newShip);
@@ -33,6 +50,8 @@ function createGameboard() {
                 }
             }
             shipId ++;
+            return true;
+            
         },
         receiveAttack(row, col) {
             const attackedCell = this.grid[row][col];

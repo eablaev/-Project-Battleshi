@@ -12,7 +12,7 @@ it('Gameboard has 10 columns in each row', () => {
     });
 });
 
-it('Gameboard places ships at specific coordinates horizontally ', () => {
+it('placeShip places ships at specific coordinates horizontally ', () => {
     const newBoard = createGameboard();
     newBoard.placeShip(0,0,4,'horizontal');
     
@@ -21,13 +21,40 @@ it('Gameboard places ships at specific coordinates horizontally ', () => {
     }  
 });
 
-it('Gameboard places ships at specific coordinates vertically ', () => {
+it('placeShip places ships at specific coordinates vertically ', () => {
     const newBoard = createGameboard();
     newBoard.placeShip(0,0,4,'vertical');
     
     for(let row = 0; row < 4; row ++) {
         expect(newBoard.grid[row][0].shipId).toBe(1)
     }  
+});
+
+it('placeShip does not allow ships to overlap horizontally', ()=> {
+    const newBoard = createGameboard();
+    newBoard.placeShip(0,0,4,'horizontal');
+
+    expect(newBoard.placeShip(0, 1, 4, 'horizontal')).toBe(false)
+
+});
+
+it('placeShip does not allow ships to overlap vertically', ()=> {
+    const newBoard = createGameboard();
+    newBoard.placeShip(0,0,4,'vertical');
+
+    expect(newBoard.placeShip(1, 0, 4, 'vertical')).toBe(false);
+});
+
+it('placeShip does not allow ships to overflow the grid horizontally', ()=> {
+    const newBoard = createGameboard();
+    
+    expect(newBoard.placeShip(0, 7, 4, 'horizontal')).toBe(false);
+});
+
+it('placeShip does not allow ships to overflow the grid vertically', ()=> {
+    const newBoard = createGameboard();
+    
+    expect(newBoard.placeShip(7, 0, 4, 'vertical')).toBe(false);
 });
 
 it('receiveAttack  determines whether or not the attack hit a ship', () => {

@@ -5,13 +5,12 @@ function createPlayer () {
         attack(gameBoard, row, col) {
             const cellCoordinates = `${row} - ${col}`;
             if(attackedCells.has(cellCoordinates)) {
-                return false
+                return false;
             } 
             attackedCells.add(cellCoordinates);
             gameBoard.receiveAttack(row, col);
 
-            return true
-
+            return true;
         }
     }
 }
