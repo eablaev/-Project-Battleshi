@@ -1,5 +1,5 @@
-const createPlayer = require('../src/createPlayer');
-const createGameboard = require('../src/createGameboard');
+import { createPlayer } from '../src/createPlayer.js';
+import { createGameboard } from '../src/createGameboard.js';
 
 it('createPlayer should be able to attack a ship', () => {
     const newPlayer = createPlayer();

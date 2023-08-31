@@ -1,4 +1,4 @@
-function createPlayer () {
+export function createPlayer () {
     const attackedCells = new Set();
 
     return {
@@ -15,4 +15,3 @@ function createPlayer () {
     }
 }
 
-module.exports = createPlayer;

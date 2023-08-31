@@ -1,7 +1,7 @@
 
-const createShip = require('./createShip');
+import {createShip} from './createShip.js'
 
-function createGameboard() {
+export function createGameboard() {
     const grid = [];
     const ships = [];
     let shipId = 1;
@@ -74,4 +74,3 @@ function createGameboard() {
    }
 }
 
-module.exports = createGameboard;

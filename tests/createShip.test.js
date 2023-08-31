@@ -1,4 +1,4 @@
-const createShip = require('../src/createShip');
+import { createShip } from "../src/createShip.js";
 
 
 it('Ship return correct length', () => {

@@ -1,5 +1,6 @@
-const createGameboard = require('../src/createGameboard');
-const createShip = require('../src/createShip')
+
+import { createGameboard } from "../src/createGameboard.js";
+import {jest} from '@jest/globals'
 
 it('Gameboards creates grid with 10 rows', () => {
     expect(createGameboard().grid.length).toBe(10);

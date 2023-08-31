@@ -1,4 +1,4 @@
-function createShip (length) {
+export function createShip (length) {
     return {
         length: length,
         hits: 0,
@@ -15,4 +15,3 @@ function createShip (length) {
 
     }
 }
-module.exports = createShip;
