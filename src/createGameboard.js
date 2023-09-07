@@ -62,6 +62,7 @@ export function createGameboard() {
                 return true
             } else {
                 attackedCell.hit = true;
+                return false
             }
         },
         allShipsSunk() {
