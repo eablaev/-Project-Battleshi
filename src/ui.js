@@ -1,12 +1,14 @@
 const computerBoard = document.getElementById('boardTwo');
+const humanBoard = document.getElementById('boardOne');
 
 export function initUi() {
 
 }
 
 export function renderGameboard(grid,containerId) {
-    
+ 
     const boardContainer = document.getElementById(containerId);
+
 
     grid.forEach((row,indexRow) => {
         const rowElement = document.createElement('div');
@@ -30,18 +32,40 @@ export function renderGameboard(grid,containerId) {
     })
 };
 
+export function renderShip(board, row, col, length, direction) {
+    const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
+    console.log(currentBoard);
+    console.log(row, col);
+    console.log(typeof(col))
+    
+    for (let i = 0; i < length; i ++) {
+        const newRow = parseInt(row, 10);
+        const newCol = parseInt(col, 10) + i;
+        const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+        console.log(cell)
+        cell.classList.add('ship-1');
+    }   
+}
+
+
 export function cellsEventListeners(board,callback) {
+    console.log('ya')
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
+    console.log(selector)
     const currentBoard = document.getElementById(selector)
     
     currentBoard.addEventListener('click', (e) => {
-        const row = e.target.getAttribute('data-row');
-        const col = e.target.getAttribute('data-col');
-        e.target.classList.add('hit')
-        callback(row, col);
-        
+        const row = parseInt(e.target.getAttribute('data-row'), 10);
+        const col = parseInt(e.target.getAttribute('data-col'), 10);
+ 
+        callback(row, col);   
     });
-
+}
+export function renderHitCell(board, row, col) {
+    const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
+    console.log(currentBoard)
+    const hitCell = currentBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+    hitCell.classList.add('hit');
 }
 
 export function renderSunkShip(shipId) {
@@ -59,4 +83,13 @@ export function renderSunkShip(shipId) {
 
 export function renderWinningMessage() {
     console.log('You won')
+}
+
+export function buttonEventListener(id, callback) {
+    const buttonElement = document.getElementById(id);
+    buttonElement.addEventListener('click',() => {
+        const input = buttonElement.innerHTML === 'X Axis' ? 'Y' : 'X' 
+        callback(input);
+        buttonElement.innerHTML = input === 'X' ? 'X Axis' : "Y Axis"
+    })
 }

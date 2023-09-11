@@ -72,3 +72,17 @@ body {
 .cell.hit.sunk {
     background-color: black;
 }
+
+
+.uiContainder,
+.axisContainer {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.axisButton {
+   
+    padding: 10px 20px;
+}

@@ -25,15 +25,26 @@ export function createGameboard() {
             //1.range
             for(let i = 0; i < length; i++) {
                 if(direction === 'horizontal') {
-                    if(col + i < 0 || col + i >= 10 ) return false;
+                    console.log(col + i )
+                    if(col + i < 0 || col + i >= 10 )  {
+                        console.log(col)
+                        console.log('if(col + i < 0 || col + i >= 10 )')
+                        return false;
+                    }
+                   
 
                     if(grid[row][col + i].shipId) {
+                        console.log('if(grid[row][col + i].shipId)')
                         return false
                     } 
                 } else if(direction === 'vertical') {
-                    if(row + i < 0 || row + i >= 10 ) return false;
+                    if(row + i < 0 || row + i >= 10 )  {
+                        console.log('if(row + i < 0 || row + i >= 10 ) ')
+                        return false
+                    };
 
                     if(grid[row + i][col].shipId) {
+                        console.log('if(grid[row + i][col].shipId) ')
                         return false
                     } 
                 }
