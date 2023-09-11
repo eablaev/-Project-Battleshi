@@ -32,18 +32,30 @@ export function renderGameboard(grid,containerId) {
     })
 };
 
-export function renderShip(board, row, col, length, direction) {
+export function renderShip(board, row, col, length, direction, shipId) {
     const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
-    console.log(currentBoard);
-    console.log(row, col);
-    console.log(typeof(col))
+    // console.log(currentBoard);
+    // console.log(row, col);
+    // console.log(typeof(col))
+
+    
     
     for (let i = 0; i < length; i ++) {
-        const newRow = parseInt(row, 10);
-        const newCol = parseInt(col, 10) + i;
-        const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
-        console.log(cell)
-        cell.classList.add('ship-1');
+        if(direction === 'horizontal') {
+            const newRow = parseInt(row, 10);
+            const newCol = parseInt(col, 10) + i;
+            const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            cell.classList.add(`ship-${shipId}`);
+        } else if (direction === 'vertical') {
+            const newRow = parseInt(row, 10) + i;
+            const newCol = parseInt(col, 10);
+            const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            cell.classList.add(`ship-${shipId}`);
+        }
+        
+        // console.log(cell)
+        // cell.classList.add('ship-1');
+        
     }   
 }
 
@@ -85,11 +97,15 @@ export function renderWinningMessage() {
     console.log('You won')
 }
 
-export function buttonEventListener(id, callback) {
+export function buttonEventListener(id) {
     const buttonElement = document.getElementById(id);
     buttonElement.addEventListener('click',() => {
-        const input = buttonElement.innerHTML === 'X Axis' ? 'Y' : 'X' 
-        callback(input);
-        buttonElement.innerHTML = input === 'X' ? 'X Axis' : "Y Axis"
+       
+        buttonElement.innerHTML = buttonElement.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis"
     })
+}
+
+export function getAxisValue() {
+    const axisButtonElement = document.getElementById('axisButton');
+    return axisButtonElement.innerHTML === 'X Axis' ? 'X' : 'Y'
 }

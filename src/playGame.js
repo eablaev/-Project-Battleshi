@@ -1,6 +1,6 @@
 import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
-import { renderGameboard, renderShip, renderHitCell, cellsEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
+import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
 
  export function playGame() {
 
@@ -11,17 +11,21 @@ import { renderGameboard, renderShip, renderHitCell, cellsEventListeners, button
 
 
             const humanBoard = createGameboard();
-            buttonEventListener('axisButton',(input) => {
-                console.log(input)
-            })
+            buttonEventListener('axisButton');
+
+            
             cellsEventListeners('humanBoard', (row, col) => {
-                
-                if (humanBoard.placeShip(row, col, 4, 'horizontal')) {
-                    renderShip('humanBoard', row, col, 4, 'horizontal') 
+               const axis = getAxisValue();
+               const direction = axis === 'X' ? 'horizontal' : 'vertical'
+               console.log(direction);
+               const result = humanBoard.placeShip(row, col, 4, direction);
+               console.log(result)
+                if (result) {
+                     renderShip('humanBoard', row, col, 4, direction, '1') 
                 }; 
             }); 
             
-            // humanBoard.placeShip(0, 0, 4, 'horizontal');
+            // humanBoard.placeShip(0, 7, 4, 'horizontal');
             // humanBoard.placeShip(0, 5, 4, 'vertical');
             // humanBoard.placeShip(6, 5, 3, 'vertical');
             // humanBoard.placeShip(3, 3, 3, 'vertical');
