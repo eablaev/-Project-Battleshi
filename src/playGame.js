@@ -1,5 +1,6 @@
 import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
+import { placeComputerShips } from './placeComputerShips.js';
 import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
 
  export function playGame() {
@@ -9,8 +10,14 @@ import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventLis
             const human = createPlayer();
             const computer = createPlayer();
 
-
             const humanBoard = createGameboard();
+            const computerBoard = createGameboard();
+            
+            renderGameboard(humanBoard.grid,"boardOne");
+            renderGameboard(computerBoard.grid,"boardTwo");
+
+
+         
             buttonEventListener('axisButton');
 
             
@@ -25,23 +32,11 @@ import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventLis
                 }; 
             }); 
             
-            // humanBoard.placeShip(0, 7, 4, 'horizontal');
-            // humanBoard.placeShip(0, 5, 4, 'vertical');
-            // humanBoard.placeShip(6, 5, 3, 'vertical');
-            // humanBoard.placeShip(3, 3, 3, 'vertical');
-            // humanBoard.placeShip(5, 7, 2, 'horizontal');
-            // humanBoard.placeShip(8, 0, 2, 'vertical');
-          
-            const computerBoard = createGameboard();
-            computerBoard.placeShip(1, 0, 4, 'vertical');
-            computerBoard.placeShip(0, 5, 4, 'horizontal');
-            computerBoard.placeShip(6, 5, 3, 'horizontal');
-            computerBoard.placeShip(3, 3, 3, 'horizontal');
-            computerBoard.placeShip(5, 7, 2, 'horizontal');
-            computerBoard.placeShip(8, 0, 2, 'horizontal');
+         
+            
+            placeComputerShips(computerBoard)
 
-            renderGameboard(humanBoard.grid,"boardOne");
-            renderGameboard(computerBoard.grid,"boardTwo");
+           
 
             function handleAttackResult(attackResult, board, row, col) {
                 if(attackResult) {    

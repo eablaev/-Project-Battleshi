@@ -23,7 +23,7 @@ export function createGameboard() {
         placeShip(row, col, length, direction) {
             //placement checks:
             //1.range
-            console.log(direction === 'vertical')
+           
             for(let i = 0; i < length; i++) {
                 if(direction === 'horizontal') {
                     if(col + i < 0 || col + i >= 10 )  {   
@@ -34,14 +34,9 @@ export function createGameboard() {
                         return false
                     } 
                 } else if(direction === 'vertical') {
-                    console.log('here ')
-                    console.log(row, col)
-                    console.log('i is : '+i)
-                    console.log(typeof(i));
-                    console.log('row + i is : ')
-                    console.log(row+i)
+                 
                     if(row + i < 0 || row + i >= 10 )  {
-                        console.log('check')
+                       
                         return false
                     };
 

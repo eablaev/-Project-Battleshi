@@ -33,37 +33,35 @@ export function renderGameboard(grid,containerId) {
 };
 
 export function renderShip(board, row, col, length, direction, shipId) {
-    const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
-    // console.log(currentBoard);
-    // console.log(row, col);
-    // console.log(typeof(col))
+    const selector = board === 'humanBoard' ? 'boardOne' : 'boardTwo';
+    const currentBoard = document.getElementById(selector);
+   
+    
 
-    
-    
     for (let i = 0; i < length; i ++) {
         if(direction === 'horizontal') {
             const newRow = parseInt(row, 10);
             const newCol = parseInt(col, 10) + i;
-            const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            const cell = currentBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            
             cell.classList.add(`ship-${shipId}`);
         } else if (direction === 'vertical') {
             const newRow = parseInt(row, 10) + i;
             const newCol = parseInt(col, 10);
-            const cell = humanBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            
+            const cell = currentBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+          
             cell.classList.add(`ship-${shipId}`);
         }
-        
-        // console.log(cell)
-        // cell.classList.add('ship-1');
         
     }   
 }
 
 
 export function cellsEventListeners(board,callback) {
-    console.log('ya')
+   
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
-    console.log(selector)
+  
     const currentBoard = document.getElementById(selector)
     
     currentBoard.addEventListener('click', (e) => {
