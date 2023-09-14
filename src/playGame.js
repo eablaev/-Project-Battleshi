@@ -1,7 +1,10 @@
 import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
 import { placeComputerShips } from './placeComputerShips.js';
+import { placeHumanShips } from './placeHumanShips.js';
 import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
+
+
 
  export function playGame() {
 
@@ -12,31 +15,16 @@ import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventLis
 
             const humanBoard = createGameboard();
             const computerBoard = createGameboard();
-            
+
             renderGameboard(humanBoard.grid,"boardOne");
             renderGameboard(computerBoard.grid,"boardTwo");
 
-
-         
             buttonEventListener('axisButton');
 
-            
-            cellsEventListeners('humanBoard', (row, col) => {
-               const axis = getAxisValue();
-               const direction = axis === 'X' ? 'horizontal' : 'vertical'
-               console.log(direction);
-               const result = humanBoard.placeShip(row, col, 4, direction);
-               console.log(result)
-                if (result) {
-                     renderShip('humanBoard', row, col, 4, direction, '1') 
-                }; 
-            }); 
-            
-         
-            
-            placeComputerShips(computerBoard)
+            placeComputerShips(computerBoard);
+            placeHumanShips(humanBoard);
 
-           
+         
 
             function handleAttackResult(attackResult, board, row, col) {
                 if(attackResult) {    
