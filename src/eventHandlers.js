@@ -1,5 +1,5 @@
-import { getAxisValue } from "./ui.js";
-import { renderShip } from "./ui.js";
+import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage } from "./ui.js";
+
 
 let humanShipId = 1;
 let humanShipLength = 4;
@@ -11,6 +11,7 @@ export  function handleAttackResult(attackResult, board, row, col) {
         const shipId = board.grid[row][col].shipId;
         const hitShip = board.ships.find(ship => ship.shipId === shipId);
         if(hitShip.isSunk()) {
+            console.log(board.ships)
             renderSunkShip(shipId);
             if(board.allShipsSunk()) {
                 renderWinningMessage();
@@ -20,6 +21,7 @@ export  function handleAttackResult(attackResult, board, row, col) {
     }
     return
 }
+  
 
 export function handleHumanShipPlacement(row, col, humanBoard) {
     const axis = getAxisValue();
@@ -29,18 +31,17 @@ export function handleHumanShipPlacement(row, col, humanBoard) {
     const result = humanBoard.placeShip(row, col, humanShipLength, direction);
     console.log(result)
      if (result) {
-          renderShip('humanBoard', row, col, humanShipLength, direction, humanShipId);
-          humanShipId ++; 
-          if(humanShipId === 7) {
-            console.log('Please make a move');
+            renderShip('humanBoard', row, col, humanShipLength, direction, humanShipId);
+            humanShipId ++; 
+            if(humanShipId === 7) {
+                console.log('Please make a move');
     
-            return true;
-
+                return true;
            }
-          if(shipCount === 0) {
+             if(shipCount === 0) {
              humanShipLength --;
              shipCount = 2
-          }
+            }
           shipCount --; 
      };    
  }; 

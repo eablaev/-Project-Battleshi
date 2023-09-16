@@ -78,6 +78,7 @@ body {
 .axisContainer {
     margin: 1rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -85,4 +86,8 @@ body {
 .axisButton {
    
     padding: 10px 20px;
+}
+
+.message {
+    background-color: aqua;
 }

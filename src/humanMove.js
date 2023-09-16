@@ -1,26 +1,25 @@
 
-import {renderHitCell, cellsEventListeners, cellsRemoveEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
+import {renderHitCell, cellsEventListeners, renderGameMessage, renderSunkShip, renderWinningMessage} from './ui.js';
 import { handleAttackResult } from './eventHandlers.js';
 import { computerMove } from './computerMove.js';
 
-
-export  function humanMove(computerBoard, humanBoard, humanTurn) {
-    cellsEventListeners(computerBoard, (row, col) => {
-    const attackResult = computerBoard.receiveAttack(row, col);
-    renderHitCell(computerBoard, row, col);
-    handleAttackResult(attackResult, computerBoard, row, col);
+export function humanMove(computerBoard, humanBoard, humanTurn) {
     
-          
-    // setTimeout(() => {
-    //     computerMove(humanBoard);
-    // }, 1000); 
-
-    return true
+    cellsEventListeners(computerBoard, (row, col) => {
+        console.log('humanTurn is : '+humanTurn)
+        if(humanTurn) {
+            const attackResult = computerBoard.receiveAttack(row, col);
+            renderHitCell(computerBoard, row, col);
+            handleAttackResult(attackResult, computerBoard, row, col);
+            humanTurn = false;
+            renderGameMessage('Take Cover!')
+            setTimeout(() => {
+                computerMove(humanBoard);
+                humanTurn = true;
+                renderGameMessage("Take Your Shot!")
+            }, 1000); 
+        }
+    
     });
- 
-}
 
-// add eventlistener
-//listen to the click
-//when clicked check if its human turn
-//if yes execute attack
+}

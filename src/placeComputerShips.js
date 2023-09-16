@@ -1,4 +1,4 @@
-import { renderShip } from "./ui.js";
+import { renderShip, renderGameMessage } from "./ui.js";
 
 export function placeComputerShips(computerBoard) {
     
@@ -19,6 +19,7 @@ export function placeComputerShips(computerBoard) {
         computerShipId++;
         if (computerShipId === 7) {
           console.log('ComputerShips placed');
+          renderGameMessage('Place Your Ships')
         }
         if (shipCount === 0) {
           computerShipLength--;

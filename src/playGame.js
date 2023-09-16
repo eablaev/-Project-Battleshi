@@ -2,16 +2,16 @@ import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
 import { placeComputerShips } from './placeComputerShips.js';
 import { placeHumanShips } from './placeHumanShips.js';
-import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventListeners, buttonEventListener, renderSunkShip, renderWinningMessage} from './ui.js';
+import { renderGameboard, buttonEventListener, renderGameMessage} from './ui.js';
+import { humanMove } from './humanMove.js';
 
-
-
- export function playGame() {
+export function playGame() {
 
     return {
         start() {
             const human = createPlayer();
             const computer = createPlayer();
+            let humanTurn = false;
 
             const humanBoard = createGameboard();
             const computerBoard = createGameboard();
@@ -22,56 +22,17 @@ import { renderGameboard, renderShip, getAxisValue, renderHitCell, cellsEventLis
             buttonEventListener('axisButton');
 
             placeComputerShips(computerBoard);
-            placeHumanShips(humanBoard);
+            placeHumanShips(humanBoard, () => {
+                renderGameMessage('Take Your Shot!')
+                console.log('All human ships were placed');
 
-         
-
-            function handleAttackResult(attackResult, board, row, col) {
-                if(attackResult) {    
-                    const shipId = board.grid[row][col].shipId;
-                    const hitShip = board.ships.find(ship => ship.shipId === shipId);
-                    if(hitShip.isSunk()) {
-                        renderSunkShip(shipId);
-                        if(board.allShipsSunk()) {
-                            renderWinningMessage();
-                            return true
-                        }
-                    }
-                }
-                return
-            }
-
-            function computerMove() {
-                const col = Math.floor(Math.random() * 10); 
-                const row = Math.floor(Math.random() * 10);
-                while(humanBoard.grid[row][col].hit === true) {
-                    return computerMove();
-                } 
-                const attackResult = humanBoard.receiveAttack(row, col); 
-                renderHitCell('humanBoard', row, col);
-
-                handleAttackResult(attackResult, humanBoard, row, col);
-            }
-
-            function humanMove() {
-                cellsEventListeners(computerBoard, (row, col) => {
-                const attackResult = computerBoard.receiveAttack(row, col);
-                renderHitCell(computerBoard, row, col);
-                handleAttackResult(attackResult, computerBoard, row, col);
-                      
-                    setTimeout(() => {
-                        computerMove();
-                      }, 1000); 
-                });
-               
-            }
-
-            humanMove()
-                
-
+                console.log(humanBoard.ships)
+                humanTurn = true;
+                humanMove(computerBoard, humanBoard, humanTurn)
+          });
         }
     }
 }
 
 const game = playGame();
-game.start()
+game.start();
