@@ -2,8 +2,9 @@ import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
 import { placeComputerShips } from './placeComputerShips.js';
 import { placeHumanShips } from './placeHumanShips.js';
-import { renderGameboard, buttonEventListener, renderGameMessage, handleAxisSwitch} from './ui.js';
+import { renderGameboard, buttonEventListener, renderGameMessage} from './ui.js';
 import { humanMove } from './humanMove.js';
+import { handleAxisSwitch } from './eventHandlers.js';
 
 export function playGame() {
 

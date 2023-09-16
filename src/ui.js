@@ -1,9 +1,7 @@
 const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
-export function initUi() {
 
-}
 
 export function renderGameboard(grid,containerId) {
  
@@ -110,14 +108,9 @@ export function buttonEventListener(id, callback) {
 
 
 
-export function handleAxisSwitch(el) {
-    el.innerHTML = el.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis";
-}
 
-export function handleGameReset () {
-    const resetGameElement = document.getElementById('resetGame');
-    resetGameElement.classList.add('show')
-}
+
+
 
 export function renderWinningMessage() {
     console.log('You won')

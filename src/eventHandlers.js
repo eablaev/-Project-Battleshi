@@ -1,13 +1,15 @@
-import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage, handleGameReset} from "./ui.js";
-
+import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage} from "./ui.js";
 
 let humanShipId = 1;
 let humanShipLength = 4;
 let shipCount = 1;
 
-
 export  function handleAttackResult(attackResult, board, row, col) {
     if(attackResult) {    
+        function handleGameReset () {
+            const resetGameElement = document.getElementById('resetGame');
+            resetGameElement.classList.add('show')
+        }
         const shipId = board.grid[row][col].shipId;
         const hitShip = board.ships.find(ship => ship.shipId === shipId);
         if(hitShip.isSunk()) {
@@ -21,7 +23,7 @@ export  function handleAttackResult(attackResult, board, row, col) {
         }
     }
     return
-}
+};
   
 
 export function handleHumanShipPlacement(row, col, humanBoard) {
@@ -46,3 +48,11 @@ export function handleHumanShipPlacement(row, col, humanBoard) {
           shipCount --; 
      };    
  }; 
+
+
+export function handleAxisSwitch(el) {
+    el.innerHTML = el.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis";
+};
+
+
+
