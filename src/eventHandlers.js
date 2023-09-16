@@ -1,4 +1,4 @@
-import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage } from "./ui.js";
+import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage, handleGameReset} from "./ui.js";
 
 
 let humanShipId = 1;
@@ -14,6 +14,7 @@ export  function handleAttackResult(attackResult, board, row, col) {
             console.log(board.ships)
             renderSunkShip(shipId);
             if(board.allShipsSunk()) {
+                handleGameReset();
                 renderWinningMessage();
                 return true
             }

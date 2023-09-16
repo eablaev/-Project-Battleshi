@@ -2,7 +2,7 @@ import { createGameboard } from './createGameboard.js';
 import { createPlayer } from './createPlayer.js';
 import { placeComputerShips } from './placeComputerShips.js';
 import { placeHumanShips } from './placeHumanShips.js';
-import { renderGameboard, buttonEventListener, renderGameMessage} from './ui.js';
+import { renderGameboard, buttonEventListener, renderGameMessage, handleAxisSwitch} from './ui.js';
 import { humanMove } from './humanMove.js';
 
 export function playGame() {
@@ -19,7 +19,7 @@ export function playGame() {
             renderGameboard(humanBoard.grid,"boardOne");
             renderGameboard(computerBoard.grid,"boardTwo");
 
-            buttonEventListener('axisButton');
+            buttonEventListener('axisButton', handleAxisSwitch);
 
             placeComputerShips(computerBoard);
             placeHumanShips(humanBoard, () => {

@@ -95,22 +95,34 @@ export function renderSunkShip(shipId) {
     });
 }
 
-export function renderWinningMessage() {
-    console.log('You won')
-}
-
 export function renderGameMessage(message) {
     const messageElement = document.getElementById('message');
     messageElement.innerHTML = message;
 }
 
-export function buttonEventListener(id) {
+export function buttonEventListener(id, callback) {
     const buttonElement = document.getElementById(id);
     buttonElement.addEventListener('click',() => {
        
-        buttonElement.innerHTML = buttonElement.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis"
+       callback(buttonElement)
     })
 }
+
+
+
+export function handleAxisSwitch(el) {
+    el.innerHTML = el.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis";
+}
+
+export function handleGameReset () {
+    const resetGameElement = document.getElementById('resetGame');
+    resetGameElement.classList.add('show')
+}
+
+export function renderWinningMessage() {
+    console.log('You won')
+}
+
 
 export function getAxisValue() {
     const axisButtonElement = document.getElementById('axisButton');

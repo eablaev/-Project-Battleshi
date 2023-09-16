@@ -91,3 +91,31 @@ body {
 .message {
     background-color: aqua;
 }
+
+.resetGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    z-index: 1;
+    background-color: rgba(0, 128, 128, 0.8); 
+    
+
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 60vw;
+    height: 60vh;
+}
+
+.resetGame.show {
+    display: flex;
+}
+
+.playAgainBtn {
+    background-color: brown;
+    opacity: 1;
+    
+}
