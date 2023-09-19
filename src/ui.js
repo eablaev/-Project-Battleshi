@@ -1,11 +1,47 @@
 const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
+//event listeners
 
+export function cellsEventListeners(board,callback) {
+   
+    const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
+  
+    const currentBoard = document.getElementById(selector);
+    const cells = currentBoard.querySelectorAll('#cell');
+    
+    cells.forEach(cell => {
+       
+        cell.addEventListener('click', (e) => {
+            console.log(e.target)
+     
+            const row = parseInt(e.target.getAttribute('data-row'), 10);
+            const col = parseInt(e.target.getAttribute('data-col'), 10);
+     
+            callback(row, col);   
+        })
+    })
+   
+}
+
+export function buttonEventListener(id, callback) {
+    const buttonElement = document.getElementById(id);
+    buttonElement.addEventListener('click',() => {
+       
+       callback(buttonElement)
+    })
+}
+
+
+////renders
 
 export function renderGameboard(grid,containerId) {
- 
     const boardContainer = document.getElementById(containerId);
+    while (boardContainer.firstChild) {
+        boardContainer.removeChild(boardContainer.firstChild);
+    }
+ 
+   
 
 
     grid.forEach((row,indexRow) => {
@@ -52,26 +88,6 @@ export function renderShip(board, row, col, length, direction, shipId) {
     }   
 }
 
-
-export function cellsEventListeners(board,callback) {
-   
-    const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
-  
-    const currentBoard = document.getElementById(selector);
-    const cells = currentBoard.querySelectorAll('#cell');
-  
-    cells.forEach(cell => {
-        cell.addEventListener('click', (e) => {
-            console.log(e.target)
-     
-            const row = parseInt(e.target.getAttribute('data-row'), 10);
-            const col = parseInt(e.target.getAttribute('data-col'), 10);
-     
-            callback(row, col);   
-        })
-    })
-   
-}
 export function renderHitCell(board, row, col) {
     const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
     console.log(currentBoard)
@@ -98,24 +114,17 @@ export function renderGameMessage(message) {
     messageElement.innerHTML = message;
 }
 
-export function buttonEventListener(id, callback) {
-    const buttonElement = document.getElementById(id);
-    buttonElement.addEventListener('click',() => {
-       
-       callback(buttonElement)
-    })
-}
-
-
-
-
-
-
-
 export function renderWinningMessage() {
     console.log('You won')
 }
 
+export function renderResetWindow () {
+    const resetGameElement = document.getElementById('resetGame');
+    resetGameElement.classList.add('show');
+   
+}
+
+//gets
 
 export function getAxisValue() {
     const axisButtonElement = document.getElementById('axisButton');

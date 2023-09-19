@@ -1,23 +1,19 @@
-import { getAxisValue, renderShip, renderSunkShip, renderWinningMessage} from "./ui.js";
+import { buttonEventListener, getAxisValue, renderShip, renderSunkShip, renderWinningMessage} from "./ui.js";
 
 let humanShipId = 1;
 let humanShipLength = 4;
 let shipCount = 1;
 
-export  function handleAttackResult(attackResult, board, row, col) {
+export  function handleAttackResult(attackResult, board, row, col, gameOver) {
     if(attackResult) {    
-        function handleGameReset () {
-            const resetGameElement = document.getElementById('resetGame');
-            resetGameElement.classList.add('show')
-        }
         const shipId = board.grid[row][col].shipId;
         const hitShip = board.ships.find(ship => ship.shipId === shipId);
         if(hitShip.isSunk()) {
             console.log(board.ships)
             renderSunkShip(shipId);
             if(board.allShipsSunk()) {
-                handleGameReset();
-                renderWinningMessage();
+               gameOver()
+            
                 return true
             }
         }
@@ -55,4 +51,9 @@ export function handleAxisSwitch(el) {
 };
 
 
+function handleGameReset() {
+    console.log('Indise handleGameReset');
+
+    
+}
 

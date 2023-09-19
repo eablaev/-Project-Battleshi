@@ -119,3 +119,12 @@ body {
     opacity: 1;
     
 }
+
+.playAgainBtn:hover {
+    background-color: brown;
+    opacity: 1;
+    font-size: .9rem;
+    color: rgb(214, 227, 99);
+
+}
+
