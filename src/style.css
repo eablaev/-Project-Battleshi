@@ -73,6 +73,10 @@ body {
     background-color: black;
 }
 
+.cell.highlight {
+    background-color: blueviolet;
+}
+
 
 .uiContainder,
 .axisContainer {

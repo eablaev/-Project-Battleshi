@@ -21,7 +21,7 @@ export function createGameboard() {
         grid: grid,
         ships:ships,
         placeShip(row, col, length, direction) {
-            console.log('Inside gameBoard: '+ row, col, length, direction)
+            // console.log('Inside gameBoard: '+ row, col, length, direction)
             //placement checks:
             //1.range
            

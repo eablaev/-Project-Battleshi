@@ -3,6 +3,7 @@ const humanBoard = document.getElementById('boardOne');
 
 //event listeners
 
+
 export function cellsEventListeners(board,callback) {
    
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
@@ -23,6 +24,34 @@ export function cellsEventListeners(board,callback) {
     })
    
 }
+export function highlightShips() {
+    const cells = humanBoard.querySelectorAll('#cell');
+    cells.forEach(cell => {
+        cell.addEventListener('mouseover', (e) => {
+            
+            const row = parseInt(e.target.getAttribute('data-row'));
+            const col = parseInt(e.target.getAttribute('data-col'));
+
+            const cell = humanBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            cell.classList.add('highlight')
+            console.log(cell)
+        })
+    })
+}
+export function removeHighlightShips() {
+    const cells = humanBoard.querySelectorAll('#cell');
+    cells.forEach(cell => {
+        cell.addEventListener('mouseout', (e) => {
+            
+            const row = parseInt(e.target.getAttribute('data-row'));
+            const col = parseInt(e.target.getAttribute('data-col'));
+
+            const cell = humanBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+            cell.classList.remove('highlight')
+            console.log(cell)
+        })
+    })
+}
 
 export function buttonEventListener(id, callback) {
     const buttonElement = document.getElementById(id);
@@ -41,9 +70,6 @@ export function renderGameboard(grid,containerId) {
         boardContainer.removeChild(boardContainer.firstChild);
     }
  
-   
-
-
     grid.forEach((row,indexRow) => {
         const rowElement = document.createElement('div');
         rowElement.classList.add('row')
@@ -121,7 +147,10 @@ export function renderWinningMessage() {
 export function renderResetWindow () {
     const resetGameElement = document.getElementById('resetGame');
     resetGameElement.classList.add('show');
-   
+}
+
+export function renderHoverShip(){
+
 }
 
 //gets
