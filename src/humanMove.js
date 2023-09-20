@@ -14,7 +14,6 @@ export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
     return
    }
 
-
     cellsEventListeners(computerBoard, (row, col) => {
         console.log('humanTurn is : '+humanTurn)
         if(humanTurn) {
@@ -31,10 +30,7 @@ export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
                     humanTurn = true;
                     renderGameMessage("Take Your Shot!")
                 }, 1000); 
-            }
-            
-        }
-    
+            } 
+        } 
     });
-
 }

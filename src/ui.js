@@ -1,6 +1,8 @@
 const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
+import { handleMouseOver } from "./eventHandlers.js";
+
 //event listeners
 
 
@@ -24,33 +26,46 @@ export function cellsEventListeners(board,callback) {
     })
    
 }
-export function highlightShips() {
-    const cells = humanBoard.querySelectorAll('#cell');
+
+
+export function cellsEventListenersMouseOver(board, callback) {
+    const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
+  
+    const currentBoard = document.getElementById(selector);
+    const cells = currentBoard.querySelectorAll('#cell');
+    
     cells.forEach(cell => {
+       
         cell.addEventListener('mouseover', (e) => {
-            
-            const row = parseInt(e.target.getAttribute('data-row'));
-            const col = parseInt(e.target.getAttribute('data-col'));
-
-            const cell = humanBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
-            cell.classList.add('highlight')
-            console.log(cell)
+            console.log(e.target)
+     
+            const row = parseInt(e.target.getAttribute('data-row'), 10);
+            const col = parseInt(e.target.getAttribute('data-col'), 10);
+     
+            callback(row, col);   
         })
     })
+
 }
-export function removeHighlightShips() {
-    const cells = humanBoard.querySelectorAll('#cell');
-    cells.forEach(cell => {
-        cell.addEventListener('mouseout', (e) => {
-            
-            const row = parseInt(e.target.getAttribute('data-row'));
-            const col = parseInt(e.target.getAttribute('data-col'));
 
-            const cell = humanBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
-            cell.classList.remove('highlight')
-            console.log(cell)
+export function cellsEventListenersMouseOut(board, callback) {
+    const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
+  
+    const currentBoard = document.getElementById(selector);
+    const cells = currentBoard.querySelectorAll('#cell');
+    
+    cells.forEach(cell => {
+       
+        cell.addEventListener('mouseout', (e) => {
+            console.log(e.target)
+     
+            const row = parseInt(e.target.getAttribute('data-row'), 10);
+            const col = parseInt(e.target.getAttribute('data-col'), 10);
+     
+            callback(row, col);   
         })
     })
+
 }
 
 export function buttonEventListener(id, callback) {

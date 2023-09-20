@@ -17,7 +17,6 @@ export function playGame() {
         buttonEventListener('playAgainBtn', () => {
             game.start();
             const resetGameEl = document.getElementById('resetGame');
-            console.log(resetGameEl)
             resetGameEl.classList.remove('show')
         })
         
