@@ -8,19 +8,20 @@ export function placeHumanShips(humanBoard, callback) {
     let shipId = 1;
     
 
-    
-    
-    //
     cellsEventListenersMouseOver('humanBoard', (row, col) => {
-        console.log(row, col);
-        console.log(shipLength)
-        handleMouseOver(row, col, shipLength)
+       if(shipLength > 1) {
+           handleMouseOver(row, col, shipLength)
+       };
+       
     });
+
     cellsEventListenersMouseOut('humanBoard', (row, col) => {
-        console.log(row, col);
-        console.log(shipLength)
-        handleMouseOut(row, col, shipLength)
+        if(shipLength >= 1) {
+            handleMouseOut(row, col, shipLength+1)
+        }
+       
     });
+
     cellsEventListeners('humanBoard', (row, col) => {
         
         if(shipLength > 1) {

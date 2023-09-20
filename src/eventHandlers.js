@@ -1,6 +1,4 @@
-import { buttonEventListener, getAxisValue, renderShip, renderSunkShip, renderWinningMessage} from "./ui.js";
-
-
+import {getAxisValue, renderSunkShip} from "./ui.js";
 
 export  function handleAttackResult(attackResult, board, row, col, gameOver) {
     if(attackResult) {    
@@ -18,8 +16,6 @@ export  function handleAttackResult(attackResult, board, row, col, gameOver) {
     return
 };
   
-
-
 export function handleAxisSwitch(el) {
     el.innerHTML = el.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis";
 };
@@ -37,14 +33,15 @@ export function handleMouseOver(row, col, length) {
             const newCol = col + i;
             
             const cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);
-            console.log(cell)
+   
             if (cell) {
-                console.log(cell)
+               
                 cell.classList.add('highlight');
             }
         }
     }
 }
+
 export function handleMouseOut(row, col, length) {
     console.log('mouseout')
 
@@ -58,9 +55,9 @@ export function handleMouseOut(row, col, length) {
             const newCol = col + i;
             
             const cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);
-            console.log(cell)
+           
             if (cell) {
-                console.log(cell)
+               
                 cell.classList.remove('highlight');
             }
         }

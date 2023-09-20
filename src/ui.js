@@ -1,7 +1,7 @@
 const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
-import { handleMouseOver } from "./eventHandlers.js";
+
 
 //event listeners
 
@@ -37,7 +37,7 @@ export function cellsEventListenersMouseOver(board, callback) {
     cells.forEach(cell => {
        
         cell.addEventListener('mouseover', (e) => {
-            console.log(e.target)
+           
      
             const row = parseInt(e.target.getAttribute('data-row'), 10);
             const col = parseInt(e.target.getAttribute('data-col'), 10);
@@ -57,7 +57,7 @@ export function cellsEventListenersMouseOut(board, callback) {
     cells.forEach(cell => {
        
         cell.addEventListener('mouseout', (e) => {
-            console.log(e.target)
+       
      
             const row = parseInt(e.target.getAttribute('data-row'), 10);
             const col = parseInt(e.target.getAttribute('data-col'), 10);
