@@ -21,10 +21,7 @@ export function createGameboard() {
         grid: grid,
         ships:ships,
         placeShip(row, col, length, direction) {
-            // console.log('Inside gameBoard: '+ row, col, length, direction)
-            //placement checks:
-            //1.range
-           
+          
             for(let i = 0; i < length; i++) {
                 if(direction === 'horizontal') {
                     if(col + i < 0 || col + i >= 10 )  {   
@@ -37,9 +34,8 @@ export function createGameboard() {
                 } else if(direction === 'vertical') {
                  
                     if(row + i < 0 || row + i >= 10 )  {
-                       
                         return false
-                    };
+                    }
 
                     if(grid[row + i][col].shipId) {
                         return false
@@ -78,8 +74,7 @@ export function createGameboard() {
                 return true
             } else {
                 return false
-            }
-            
+            }  
         }
    }
 }

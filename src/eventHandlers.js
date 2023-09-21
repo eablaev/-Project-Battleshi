@@ -21,10 +21,7 @@ export function handleAxisSwitch(el) {
 };
 
 export function handleMouseOver(row, col, length, grid) {
-    console.log('mouseover')
-
-    console.log(row, col);
-    console.log(length)
+    console.log('mouseover');
     const axis = getAxisValue();
     const direction = axis === 'X' ? 'horizontal' : 'vertical';
     //checks
@@ -85,40 +82,4 @@ export function handleMouseOut(row, col, length) {
         }
     }
 }
-
-
-
-
-
-
-//trsh 
-
-// let humanShipId = 1;
-// let humanShipLength = 4;
-// let shipCount = 1;
-
-
-// export function handleHumanShipPlacement(row, col, humanBoard) {
-//     const axis = getAxisValue();
-//     const direction = axis === 'X' ? 'horizontal' : 'vertical'
-//     console.log(direction);
-    
-//     const result = humanBoard.placeShip(row, col, humanShipLength, direction);
-//     console.log(result)
-//      if (result) {
-//             renderShip('humanBoard', row, col, humanShipLength, direction, humanShipId);
-//             humanShipId ++; 
-//             if(humanShipId === 7) {
-//                 console.log('Please make a move');
-    
-//                 return true;
-//            }
-//              if(shipCount === 0) {
-//              humanShipLength --;
-//              shipCount = 2
-//             }
-//           shipCount --; 
-//      };    
-//  }; 
-
 

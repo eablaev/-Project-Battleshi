@@ -10,8 +10,6 @@ export function createShip (length) {
         isSunk() {
             if(this.length === this.hits) return true;
             return false
-
         }
-
     }
 }

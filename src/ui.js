@@ -1,11 +1,7 @@
 const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
-
-
 //event listeners
-
-
 export function cellsEventListeners(board,callback) {
    
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
@@ -27,7 +23,6 @@ export function cellsEventListeners(board,callback) {
    
 }
 
-
 export function cellsEventListenersMouseOver(board, callback) {
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
   
@@ -38,7 +33,6 @@ export function cellsEventListenersMouseOver(board, callback) {
        
         cell.addEventListener('mouseover', (e) => {
            
-     
             const row = parseInt(e.target.getAttribute('data-row'), 10);
             const col = parseInt(e.target.getAttribute('data-col'), 10);
      
@@ -58,7 +52,6 @@ export function cellsEventListenersMouseOut(board, callback) {
        
         cell.addEventListener('mouseout', (e) => {
        
-     
             const row = parseInt(e.target.getAttribute('data-row'), 10);
             const col = parseInt(e.target.getAttribute('data-col'), 10);
      
@@ -76,9 +69,7 @@ export function buttonEventListener(id, callback) {
     })
 }
 
-
 ////renders
-
 export function renderGameboard(grid,containerId) {
     const boardContainer = document.getElementById(containerId);
     while (boardContainer.firstChild) {
@@ -164,12 +155,7 @@ export function renderResetWindow () {
     resetGameElement.classList.add('show');
 }
 
-export function renderHoverShip(){
-
-}
-
 //gets
-
 export function getAxisValue() {
     const axisButtonElement = document.getElementById('axisButton');
     return axisButtonElement.innerHTML === 'X Axis' ? 'X' : 'Y'

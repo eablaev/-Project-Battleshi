@@ -4,15 +4,14 @@ import { handleAttackResult } from './eventHandlers.js';
 import { computerMove } from './computerMove.js';
 
 export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
-    
     let isGameOver = false;
  
-   function gameOver() {
-    isGameOver = true;
-    console.log('game is over');
-    resetTheGame()
-    return
-   }
+    function gameOver() {
+        isGameOver = true;
+        console.log('game is over');
+        resetTheGame();
+        return
+    }
 
     cellsEventListeners(computerBoard, (row, col) => {
         console.log('humanTurn is : '+humanTurn)
