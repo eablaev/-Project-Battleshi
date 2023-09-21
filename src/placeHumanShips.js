@@ -10,7 +10,7 @@ export function placeHumanShips(humanBoard, callback) {
 
     cellsEventListenersMouseOver('humanBoard', (row, col) => {
        if(shipLength > 1) {
-           handleMouseOver(row, col, shipLength)
+           handleMouseOver(row, col, shipLength, humanBoard.grid)
        };
        
     });

@@ -20,46 +20,68 @@ export function handleAxisSwitch(el) {
     el.innerHTML = el.innerHTML === 'X Axis' ? 'Y Axis' : "X Axis";
 };
 
-export function handleMouseOver(row, col, length) {
+export function handleMouseOver(row, col, length, grid) {
     console.log('mouseover')
 
     console.log(row, col);
     console.log(length)
     const axis = getAxisValue();
     const direction = axis === 'X' ? 'horizontal' : 'vertical';
+    //checks
+    for(let i = 0; i < length; i++) {
+        if(direction === 'horizontal') {
+            if(col + i < 0 || col + i >= 10 )  {   
+                return false;
+            }
+           
+            if(grid[row][col + i].shipId) {
+                return false
+            } 
+        } else if(direction === 'vertical') {
+         
+            if(row + i < 0 || row + i >= 10 )  {
+               
+                return false
+            };
+
+                if(grid[row + i][col].shipId) {
+                    return false
+                } 
+        }
+    }
+    //
 
     for (let i = 0; i < length; i++) {
+        let cell = null;
         if (direction === 'horizontal') {
             const newCol = col + i;
-            
-            const cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);
-   
-            if (cell) {
-               
-                cell.classList.add('highlight');
-            }
+            cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);    
+        } else if(direction === 'vertical') {
+            const newRow = row + i;
+            cell = document.querySelector('#boardOne').querySelector(`[data-row="${newRow}"][data-col="${col}"]`);
+        }
+        if (cell) {        
+            cell.classList.add('highlight');
         }
     }
 }
 
 export function handleMouseOut(row, col, length) {
     console.log('mouseout')
-
-    console.log(row, col);
-    console.log(length)
     const axis = getAxisValue();
     const direction = axis === 'X' ? 'horizontal' : 'vertical';
 
     for (let i = 0; i < length; i++) {
+        let cell = null;
         if (direction === 'horizontal') {
-            const newCol = col + i;
-            
-            const cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);
-           
-            if (cell) {
-               
-                cell.classList.remove('highlight');
-            }
+            const newCol = col + i; 
+            cell = document.querySelector('#boardOne').querySelector(`[data-row="${row}"][data-col="${newCol}"]`);
+        } else if (direction === 'vertical') {
+            const newRow = row + i;
+            cell = document.querySelector('#boardOne').querySelector(`[data-row="${newRow}"][data-col="${col}"]`);
+        }
+        if (cell) {          
+            cell.classList.remove('highlight');
         }
     }
 }
