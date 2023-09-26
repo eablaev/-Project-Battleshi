@@ -28,7 +28,7 @@ export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
                     computerMove(humanBoard);
                     humanTurn = true;
                     renderGameMessage("Take Your Shot!")
-                }, 1000); 
+                }, 2000); 
             } 
         } 
     });

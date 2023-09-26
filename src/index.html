@@ -8,22 +8,25 @@
     <script type="module" src="./playGame.js" defer></script>
 </head>
 <body>
-    <div class="resetGame" id="resetGame" >
-        <div class="winningMessage" id="winningMessage" >Congrats You Won!</div>
-        <button class="playAgainBtn" id="playAgainBtn">Play Again</button>
-    </div>
-    <div class="uiContainder">
-        <div class="axisContainer">
-            <button class="axisButton" id="axisButton">X Axis</button>
+    <div class="gameContainer">
+        <div class="resetGame" id="resetGame" >
+            <div class="winningMessage" id="winningMessage" >Congrats You Won!</div>
+            <button class="playAgainBtn" id="playAgainBtn">Play Again</button>
         </div>
-        <div class="messageContainer">
-            <div class="message" id="message"></div>
+        <div class="uiContainder">
+            <div class="axisContainer">
+                <button class="axisButton" id="axisButton">X Axis</button>
+            </div>
+            <div class="messageContainer">
+                <div class="message" id="message"></div>
+            </div>
+        </div>
+        <div class="gameboardsContainer" id="gameboardsContainer">
+            <div class="boardOne" id="boardOne"></div>
+            <div class="boardTwo" id="boardTwo"></div>
         </div>
     </div>
-    <div class="gameboardsContainer" id="gameboardsContainer">
-        <div class="boardOne" id="boardOne"></div>
-        <div class="boardTwo" id="boardTwo"></div>
-    </div>
+    
     
 </body>
 </html>

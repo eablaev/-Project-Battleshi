@@ -47,7 +47,6 @@ export function handleMouseOver(row, col, length, grid) {
         }
     }
     //
-
     for (let i = 0; i < length; i++) {
         let cell = null;
         if (direction === 'horizontal') {

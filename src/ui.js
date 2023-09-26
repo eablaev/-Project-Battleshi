@@ -2,7 +2,7 @@ const computerBoard = document.getElementById('boardTwo');
 const humanBoard = document.getElementById('boardOne');
 
 //event listeners
-export function cellsEventListeners(board,callback) {
+export function cellsEventListeners(board, callback) {
    
     const selector = board === 'humanBoard' ?'boardOne' : 'boardTwo';
   
@@ -109,11 +109,18 @@ export function renderShip(board, row, col, length, direction, shipId) {
             const newCol = parseInt(col, 10) + i;
             const cell = currentBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
             cell.classList.add(`ship-${shipId}`);
+            if(selector === 'boardTwo') {
+                cell.classList.add('hide')
+            }
             cell.setAttribute('data-ship', shipId)
         } else if (direction === 'vertical') {
             const newRow = parseInt(row, 10) + i;
             const newCol = parseInt(col, 10);
             const cell = currentBoard.querySelector(`[data-row="${newRow}"][data-col="${newCol}"]`);
+            
+            if(selector === 'boardTwo') {
+                cell.classList.add('hide')
+            }
             cell.classList.add(`ship-${shipId}`);
             cell.setAttribute('data-ship', shipId)
         }  
@@ -124,6 +131,11 @@ export function renderHitCell(board, row, col) {
     const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
     console.log(currentBoard)
     const hitCell = currentBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+    
+    if(hitCell.classList.contains('hide')) {
+        console.log('yooooooooooo')
+        hitCell.classList.remove('hide')
+    }
     hitCell.classList.add('hit');
 }
 
@@ -143,8 +155,32 @@ export function renderSunkShip(shipId) {
 
 export function renderGameMessage(message) {
     const messageElement = document.getElementById('message');
-    messageElement.innerHTML = message;
-}
+    messageElement.innerHTML = ''
+    const messageSplit = message.split('');
+
+    console.log(messageElement.innerHtml);
+
+    for(let i = 0; i < messageSplit.length; i++) {
+        messageElement.innerHTML += "<span>"+ messageSplit[i]+ "</span>"
+    };
+    let charIndex = 0;
+    let timer = setInterval(onTick, 50);
+    function onTick() {
+        const span = document.querySelectorAll('span')[charIndex];
+        span.classList.add('fade')
+        charIndex++;
+        if(charIndex === messageSplit.length) {
+            endTimer();
+            console.log(document.querySelectorAll('span')[0])
+            return
+        }
+    }
+    function endTimer() {
+        clearInterval(timer);
+        timer = null;
+    }
+  
+  }
 
 export function renderWinningMessage() {
     console.log('You won')
