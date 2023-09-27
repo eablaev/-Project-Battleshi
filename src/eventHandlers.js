@@ -21,7 +21,7 @@ export function handleAxisSwitch(el) {
 };
 
 export function handleMouseOver(row, col, length, grid) {
-    console.log('mouseover');
+    // console.log('mouseover');
     const axis = getAxisValue();
     const direction = axis === 'X' ? 'horizontal' : 'vertical';
     //checks
@@ -63,7 +63,7 @@ export function handleMouseOver(row, col, length, grid) {
 }
 
 export function handleMouseOut(row, col, length) {
-    console.log('mouseout')
+    // console.log('mouseout')
     const axis = getAxisValue();
     const direction = axis === 'X' ? 'horizontal' : 'vertical';
 

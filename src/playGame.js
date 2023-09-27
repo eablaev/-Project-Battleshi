@@ -50,6 +50,7 @@ export function playGame() {
             buttonEventListener('axisButton', handleAxisSwitch);
 
             placeComputerShips(computerBoard);
+            console.log(computerBoard.grid)
             placeHumanShips(humanBoard, () => {
                 renderGameMessage('Take Your Shot!')
                 console.log('All human ships were placed');

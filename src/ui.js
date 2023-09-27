@@ -12,7 +12,7 @@ export function cellsEventListeners(board, callback) {
     cells.forEach(cell => {
        
         cell.addEventListener('click', (e) => {
-            console.log(e.target)
+            // console.log(e.target)
      
             const row = parseInt(e.target.getAttribute('data-row'), 10);
             const col = parseInt(e.target.getAttribute('data-col'), 10);
@@ -129,7 +129,7 @@ export function renderShip(board, row, col, length, direction, shipId) {
 
 export function renderHitCell(board, row, col) {
     const currentBoard = board === 'humanBoard' ? humanBoard : computerBoard;
-    console.log(currentBoard)
+    // console.log(currentBoard)
     const hitCell = currentBoard.querySelector(`[data-row="${row}"][data-col="${col}"]`);
     
     if(hitCell.classList.contains('hide')) {
@@ -158,7 +158,7 @@ export function renderGameMessage(message) {
     messageElement.innerHTML = ''
     const messageSplit = message.split('');
 
-    console.log(messageElement.innerHtml);
+    // console.log(messageElement.innerHtml);
 
     for(let i = 0; i < messageSplit.length; i++) {
         messageElement.innerHTML += "<span>"+ messageSplit[i]+ "</span>"
@@ -171,7 +171,7 @@ export function renderGameMessage(message) {
         charIndex++;
         if(charIndex === messageSplit.length) {
             endTimer();
-            console.log(document.querySelectorAll('span')[0])
+            // console.log(document.querySelectorAll('span')[0])
             return
         }
     }
