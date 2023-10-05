@@ -32,7 +32,9 @@ export function playGame() {
             let humanTurn = false;
 
             humanBoard = createGameboard();
+            humanBoard.id = 'humanBoard'
             computerBoard = createGameboard();
+            computerBoard.id = 'computerBoard'
             
             ///testing
             // const x = Math.floor(Math.random() *9)
@@ -50,8 +52,17 @@ export function playGame() {
             buttonEventListener('axisButton', handleAxisSwitch);
 
             placeComputerShips(computerBoard);
-            console.log(computerBoard.grid)
+            console.log(computerBoard.ships)
             placeHumanShips(humanBoard, () => {
+                /////testing////
+                // document.getElementById('boardOne').querySelector('[data-row="0"][data-col="1"]').classList.add('hit');
+                // document.getElementById('boardOne').querySelector('[data-row="0"][data-col="2"]').classList.add('hit');
+                // document.getElementById('boardOne').querySelector('[data-row="0"][data-col="3"]').classList.add('hit');
+                // humanBoard.grid[0][1].hit = true;
+                // humanBoard.grid[0][2].hit = true;
+                // humanBoard.grid[0][3].hit = true;
+               
+                //////
                 renderGameMessage('Take Your Shot!')
                 console.log('All human ships were placed');
 

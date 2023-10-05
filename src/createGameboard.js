@@ -18,6 +18,7 @@ export function createGameboard() {
     }
 
     return {
+        id: null,
         grid: grid,
         ships:ships,
         placeShip(row, col, length, direction) {

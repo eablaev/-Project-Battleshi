@@ -139,9 +139,11 @@ export function renderHitCell(board, row, col) {
     hitCell.classList.add('hit');
 }
 
-export function renderSunkShip(shipId) {
+export function renderSunkShip(shipId, board) {
     console.log('render sunk ship')
-    const cells = computerBoard.querySelectorAll('.cell');
+    const currentBoard = board.id === 'humanBoard' ?humanBoard : computerBoard;
+  
+    const cells = currentBoard.querySelectorAll('.cell');
    
     cells.forEach(cell => {
         if(cell.getAttribute('data-ship')) {

@@ -1,12 +1,14 @@
 import {getAxisValue, renderSunkShip} from "./ui.js";
 
 export  function handleAttackResult(attackResult, board, row, col, gameOver) {
+    console.log('handleAttackResults: ')
+    console.log(board)
     if(attackResult) {    
         const shipId = board.grid[row][col].shipId;
         const hitShip = board.ships.find(ship => ship.shipId === shipId);
         if(hitShip.isSunk()) {
             console.log(board.ships)
-            renderSunkShip(shipId);
+            renderSunkShip(shipId, board);
             if(board.allShipsSunk()) {
                 gameOver()
                 return true

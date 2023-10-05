@@ -18,14 +18,19 @@ export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
         if(humanTurn) {
             const attackResult = computerBoard.receiveAttack(row, col);
             console.log(attackResult)
-            renderHitCell(computerBoard, row, col);
+            renderHitCell('computerBoard', row, col);
             handleAttackResult(attackResult, computerBoard, row, col, gameOver);
             humanTurn = false;
             renderGameMessage('Take Cover!');
             
             if(!isGameOver) {
                 setTimeout(() => {
-                    computerMove(humanBoard);
+                    const [row, col] =  computerMove(humanBoard);
+                    const attackResultComp = humanBoard.receiveAttack(row, col);
+                    console.log(attackResultComp);
+                    renderHitCell('humanBoard' , row, col);
+                    handleAttackResult(attackResultComp, humanBoard, row, col, gameOver);
+                
                     humanTurn = true;
                     renderGameMessage("Take Your Shot!")
                 }, 2000); 
