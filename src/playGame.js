@@ -10,10 +10,10 @@ export function playGame() {
     let humanBoard ;
     let computerBoard ;
 
-    function resetTheGame() {
+    function resetTheGame(id) {
         console.log('reset');
 
-        renderResetWindow();
+        renderResetWindow(id);
         buttonEventListener('playAgainBtn', () => {
             game.start();
             const resetGameEl = document.getElementById('resetGame');

@@ -6,14 +6,18 @@ import { computerMove } from './computerMove.js';
 export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
     let isGameOver = false;
  
-    function gameOver() {
+    function gameOver(id) {
+        console.log('GameOver id is :'+id)
         isGameOver = true;
         console.log('game is over');
-        resetTheGame();
+        resetTheGame(id);
         return
     }
 
     cellsEventListeners(computerBoard, (row, col) => {
+        //test
+        // gameOver(humanBoard.id)
+        //test
         console.log('humanTurn is : '+humanTurn)
         if(humanTurn) {
             const attackResult = computerBoard.receiveAttack(row, col);
@@ -22,7 +26,7 @@ export function humanMove(computerBoard, humanBoard, humanTurn, resetTheGame) {
             handleAttackResult(attackResult, computerBoard, row, col, gameOver);
             humanTurn = false;
             renderGameMessage('Take Cover!');
-            
+           
             if(!isGameOver) {
                 setTimeout(() => {
                     const [row, col] =  computerMove(humanBoard);

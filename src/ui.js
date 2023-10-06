@@ -188,7 +188,11 @@ export function renderWinningMessage() {
     console.log('You won')
 }
 
-export function renderResetWindow () {
+export function renderResetWindow (id) {
+    const message = id === 'computerBoard' ? 'Human Wins!' : 'Computer Wins!';
+    const messageEl = document.getElementById('winningMessage');
+    messageEl.innerHTML = message;
+
     const resetGameElement = document.getElementById('resetGame');
     resetGameElement.classList.add('show');
 }
