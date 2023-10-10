@@ -181,12 +181,9 @@ export function renderGameMessage(message) {
         clearInterval(timer);
         timer = null;
     }
-  
   }
 
-export function renderWinningMessage() {
-    console.log('You won')
-}
+
 
 export function renderResetWindow (id) {
     const message = id === 'computerBoard' ? 'Human Wins!' : 'Computer Wins!';

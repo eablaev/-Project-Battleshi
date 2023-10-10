@@ -4,7 +4,7 @@ export  function handleAttackResult(attackResult, board, row, col, gameOver) {
     console.log('handleAttackResults: ')
 
     //testing
-    if(board.id !== 'humanBoard') {
+    if(board.id === 'humanBoard') {
         gameOver(board.id)
     }
     //testing
